@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AccountService } from '../account-service.service';
-import { Account } from '../account';
+import { AccountService } from '../../account-service.service';
+import { Account } from '../../account';
 
 @Component({
   selector: 'app-account-form',

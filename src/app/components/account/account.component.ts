@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Account } from '../account';
-import { AccountService } from '../account-service.service';
+import { Account } from '../../account';
+import { AccountService } from '../../account-service.service';
 import { ActivatedRoute } from '@angular/router'
-import { Transfer } from '../transfer';
+import { Transfer } from '../../transfer';
 
 @Component({
   selector: 'app-account',

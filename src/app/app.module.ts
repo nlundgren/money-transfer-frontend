@@ -4,11 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { AccountListComponent } from './account-list/account-list.component';
-import { AccountFormComponent } from './account-form/account-form.component';
+import { AccountListComponent } from './components/account-list/account-list.component';
+import { AccountFormComponent } from './components/account-form/account-form.component';
 import { AccountService } from './account-service.service';
-import { AccountComponent } from './account/account.component';
-import { HomeComponent } from './home/home.component';
+import { AccountComponent } from './components/account/account.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [

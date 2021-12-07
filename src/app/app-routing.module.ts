@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AccountListComponent } from './account-list/account-list.component';
-import { AccountFormComponent } from './account-form/account-form.component';
-import { AccountComponent } from './account/account.component';
-import { HomeComponent } from './home/home.component';
+import { AccountListComponent } from './components/account-list/account-list.component';
+import { AccountFormComponent } from './components/account-form/account-form.component';
+import { AccountComponent } from './components/account/account.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: 'accounts', component: AccountListComponent },
