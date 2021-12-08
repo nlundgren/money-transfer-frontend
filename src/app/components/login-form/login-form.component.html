@@ -2,14 +2,14 @@
     <div class="card-body" *ngIf="step == 'login'">
         <form (ngSubmit)="onSubmit()" #accountForm="ngForm">
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name">Email</label>
                 <input type="text" [(ngModel)]="account.firstName" class="form-control" id="name" name="name"
-                    placeholder="Enter your name" required #name="ngModel">
+                    placeholder="Enter your email" required #name="ngModel">
             </div>
             <div class="form-group">
                 <label for="name">Password</label>
                 <input type="text" [(ngModel)]="account.lastName" class="form-control" id="name" name="name"
-                    placeholder="Enter your name" required #name="ngModel">
+                    placeholder="Enter your password" required #name="ngModel">
             </div>
             <button type="submit" [disabled]="!accountForm.form.valid" class="btn btn-info">Submit</button>
         </form>
@@ -27,10 +27,15 @@
                     placeholder="Enter your name" required #name="ngModel">
             </div>
             <div class="form-group">
-                <label for="balance">Balance</label>
-                <input type="number" [(ngModel)]="account.balance" class="form-control" id="email" name="email"
-                    placeholder="Enter initial balance" required #email="ngModel">
+                <label for="balance">Email</label>
+                <input type="text" [(ngModel)]="account.balance" class="form-control" id="email" name="email"
+                    placeholder="Enter your email" required #email="ngModel">
 
+            </div>
+            <div class="form-group">
+                <label for="name">Password</label>
+                <input type="text" [(ngModel)]="account.lastName" class="form-control" id="name" name="name"
+                    placeholder="Enter your password" required #name="ngModel">
             </div>
             <button type="submit" [disabled]="!accountForm.form.valid" class="btn btn-info">Submit</button>
         </form>

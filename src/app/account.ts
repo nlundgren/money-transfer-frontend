@@ -4,4 +4,6 @@ export class Account {
     lastName!: string;
     type: string | undefined;
     balance!: number;
+    email!: string;
+    password!: string;
 }
