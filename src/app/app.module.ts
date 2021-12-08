@@ -9,6 +9,7 @@ import { AccountFormComponent } from './components/account-form/account-form.com
 import { AccountService } from './account-service.service';
 import { AccountComponent } from './components/account/account.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HomeComponent } from './components/home/home.component';
     AccountListComponent,
     AccountFormComponent,
     AccountComponent,
-    HomeComponent
+    HomeComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
