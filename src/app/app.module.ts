@@ -10,6 +10,8 @@ import { AccountService } from './account-service.service';
 import { AccountComponent } from './components/account/account.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -19,12 +21,15 @@ import { LoginFormComponent } from './components/login-form/login-form.component
     AccountComponent,
     HomeComponent,
     LoginFormComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [AccountService],
   bootstrap: [AppComponent]

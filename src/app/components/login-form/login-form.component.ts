@@ -14,7 +14,12 @@ export class LoginFormComponent implements OnInit {
   @Input()
   account: Account = new Account;
 
+  @Input()
+  step: string = "";
+
+
   ngOnInit(): void {
+    console.log(this.step)
   }
 
   onSubmit(): void {

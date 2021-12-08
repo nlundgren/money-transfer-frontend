@@ -4,20 +4,14 @@
 
         <div class="card-body">
             <h2 class="card-title text-center text-white py-3">Select action</h2>
-            <ul class="nav nav-tabs">
-                <li role="presentation" class="active"><a href="#">Home</a></li>
-                <li role="presentation"><a href="#">Profile</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
-            </ul>
-            <app-login-form [account]="account"></app-login-form>
-            <ul class="text-center list-inline py-3">
-                <li class="list-inline-item">
-                    <a routerLink="/accounts" class="btn btn-info">List Users</a>
-                </li>
-                <li class="list-inline-item">
-                    <a routerLink="/addaccount" class="btn btn-info">Add User</a>
-                </li>
-            </ul>
+            <mat-tab-group mat-align-tabs="start">
+                <mat-tab label="Login">
+                    <app-login-form step="login" [account]="account"></app-login-form>
+                </mat-tab>
+                <mat-tab label="Register">
+                    <app-login-form step="register" [account]="account"></app-login-form>
+                </mat-tab>
+            </mat-tab-group>
         </div>
     </div>
 </div>
