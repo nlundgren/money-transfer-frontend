@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Account } from '../../account';
+import { AccountService } from '../../account-service.service';
 
 @Component({
   selector: 'app-login-form',
@@ -8,11 +9,12 @@ import { Account } from '../../account';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private accountService: AccountService) { }
 
 
   @Input()
   account: Account = new Account;
+
 
   @Input()
   step: string = "";
@@ -23,7 +25,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-
+    if (this.step == "register") {
+      this.accountService.save(this.account).subscribe((result: any) => console.log(result));
+    } else {
+      this.accountService.login(this.account).subscribe((result: any) => console.log(result));
+    }
   }
-
 }

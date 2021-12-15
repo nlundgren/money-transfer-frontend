@@ -26,7 +26,11 @@ export class AccountService {
     return this.http.get<Transfer[]>(`${this.accountsUrl}/transfer/${id}`);
   }
   public save(account: Account) {
-    return this.http.post<Account>(`${this.accountsUrl}/addAccount`, account);
+    return this.http.post<Account>(`${this.accountsUrl}/register`, account);
+  }
+
+  public login(account: Account) {
+    return this.http.post<Account>(`${this.accountsUrl}/login`, account);
   }
 
   public createTransfer(transfer: Transfer) {
