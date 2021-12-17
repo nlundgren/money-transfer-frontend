@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from '../../account-service.service';
 import { Account } from '../../account';
 
+
 @Component({
     selector: 'app-home-root',
     templateUrl: './home.component.html',
@@ -19,5 +20,13 @@ export class HomeComponent {
         this.account = new Account();
     }
 
+
+
     title = 'home';
+
+    ngOnInit() {
+        if (this.accountService.isLoggedIn()) {
+            this.router.navigateByUrl("/account")
+        }
+    }
 }

@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Account } from '../../account';
 import { AccountService } from '../../account-service.service';
+import jwt_decode from "jwt-decode";
+import { FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login-form',
@@ -9,7 +12,9 @@ import { AccountService } from '../../account-service.service';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService) {
+    form: FormGroup;
+  }
 
 
   @Input()
@@ -28,7 +33,12 @@ export class LoginFormComponent implements OnInit {
     if (this.step == "register") {
       this.accountService.save(this.account).subscribe((result: any) => console.log(result));
     } else {
-      this.accountService.login(this.account).subscribe((result: any) => console.log(result));
+      this.accountService.login(this.account).subscribe({
+        next: (response: any) => {
+          localStorage.setItem("token", response.jwt);
+        }
+
+      });
     }
   }
 }

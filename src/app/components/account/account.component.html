@@ -24,7 +24,7 @@
     <div>
 
         <div class="card my-5">
-            <h6 style="padding: 15px;">Inititate transfer</h6>
+            <h3 style="padding: 15px;">Inititate transfer</h3>
             <div class="card-body">
                 <form (ngSubmit)="onSubmit()" #transferForm="ngForm">
                     <div class="form-group">
@@ -51,5 +51,5 @@
     </div>
 
 </div>
-
-<h6>Available balance: ${{account.balance}}</h6>
+<button (click)="logout()" class="btn btn-info">Log out</button>
+<h3>Available balance: ${{account.balance}}</h3>

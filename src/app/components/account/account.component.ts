@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Account } from '../../account';
 import { AccountService } from '../../account-service.service';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import { Transfer } from '../../transfer';
+import jwt_decode from "jwt-decode";
+
 
 @Component({
   selector: 'app-account',
@@ -17,31 +19,54 @@ export class AccountComponent implements OnInit {
   id!: string | null;
   accounts: Account[] = [];
 
-  constructor(private accountService: AccountService, private route: ActivatedRoute) {
+  constructor(private accountService: AccountService, private route: ActivatedRoute, private router: Router) {
     this.transfer = new Transfer()
   }
 
-  ngOnInit() {
 
-    this.id = this.route.snapshot.paramMap.get('id')
-    this.transfer.fromId = this.id
+  decodeToken() {
+    let token = localStorage.getItem("token");
+    if (token) {
+      const decoded: any = jwt_decode(token);
+      this.account.email = decoded.sub
+      console.log(decoded.fromId)
+    }
+  }
 
-    this.accountService.findOne(this.id).subscribe((data: Account) => {
+  loadAccount() {
+    this.accountService.findOne(this.account.email).subscribe((data: Account) => {
       this.account = data;
+      console.log(this.account.id)
+      this.accountService.findAllTransfers(this.account.id).subscribe((data: Transfer[]) => {
+        this.transfers = data;
+      })
+      this.transfer.fromId = this.account.id
     });
-    this.accountService.findAllTransfers(this.id).subscribe((data: Transfer[]) => {
-      this.transfers = data;
-    })
+
+  }
+
+  logout() {
+    localStorage.clear()
+    this.router.navigateByUrl("");
+  }
+
+  async ngOnInit() {
+
+    await this.decodeToken()
+    await this.loadAccount()
+
+
     this.accountService.findAll().subscribe((data: any[]) => {
       this.accounts = data;
     });
+
   }
 
 
   onSubmit() {
     this.accountService.createTransfer(this.transfer).subscribe((result: any) => this.transfers.push(result))
     this.account.balance = this.account.balance - this.transfer.amount;
-    this.transfer = { fromId: this.id, toId: '', amount: 0, concept: '' }
+    this.transfer = { fromId: this.account.id, toId: '', amount: 0, concept: '' }
 
   }
 }
