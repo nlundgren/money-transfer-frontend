@@ -1,55 +1,102 @@
-<p>Welcome {{ account.firstName }}</p>
-<h3>Transfers</h3>
+<div class="page">
+    <h2>Welcome {{ account.firstName }}</h2>
+    <div class="split-container">
 
-<div class="split-container">
-    <div class="card my-5" style="margin-right: 50px;">
-        <div class="card-body">
-            <table class="table table-bordered table-striped">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Concept</th>
-                        <th scope="col">Amount</th>
+        <div class="card my-5" style="margin-right: 50px;">
+            <mat-tab-group mat-align-tabs="start">
+                <mat-tab label="All transactions">
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Concept</th>
+                                    <th scope="col">Amount</th>
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr routerLink="/account/{{ account.id }}" *ngFor="let transfer of transfers">
-                        <td>{{ transfer.concept }}</td>
-                        <td>{{ transfer.amount }}</td>
-                    </tr>
-                </tbody>
-            </table>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr routerLink="/account/{{ account.id }}" *ngFor="let transfer of transfers">
+                                    <td>{{ transfer.concept }}</td>
+                                    <td>{{ transfer.amount }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Top transactions">
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Concept</th>
+                                    <th scope="col">Amount</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr routerLink="/account/{{ account.id }}" *ngFor="let transfer of transfers">
+                                    <td>{{ transfer.concept }}</td>
+                                    <td>{{ transfer.amount }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Most frequent">
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Concept</th>
+                                    <th scope="col">Amount</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr routerLink="/account/{{ account.id }}" *ngFor="let transfer of transfers">
+                                    <td>{{ transfer.concept }}</td>
+                                    <td>{{ transfer.amount }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+
         </div>
-    </div>
-    <div>
+        <div>
 
-        <div class="card my-5">
-            <h3 style="padding: 15px;">Inititate transfer</h3>
-            <div class="card-body">
-                <form (ngSubmit)="onSubmit()" #transferForm="ngForm">
-                    <div class="form-group">
-                        <label for="amount">Amount</label>
-                        <input type="text" [(ngModel)]="transfer.amount" class="form-control" id="amount" name="amount">
-                    </div>
-                    <div class="form-group">
-                        <label for="amount">Concept</label>
-                        <input type="text" [(ngModel)]="transfer.concept" class="form-control" id="concept"
-                            name="concept">
-                    </div>
+            <div class="card my-5">
+                <h3 style="padding: 15px;">Inititate transfer</h3>
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmit()" #transferForm="ngForm">
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="text" [(ngModel)]="transfer.amount" class="form-control" id="amount"
+                                name="amount">
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Concept</label>
+                            <input type="text" [(ngModel)]="transfer.concept" class="form-control" id="concept"
+                                name="concept">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="to">To</label>
-                        <select class="form-control" aria-label="Default select example" [(ngModel)]="transfer.toId"
-                            id="toId" name="toId">
-                            <option *ngFor="let a of accounts" [ngValue]="a.id">{{a.firstName}}</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-info">Submit</button>
-                </form>
+                        <div class="form-group">
+                            <label for="to">To</label>
+                            <select class="form-control" aria-label="Default select example" [(ngModel)]="transfer.toId"
+                                id="toId" name="toId">
+                                <option *ngFor="let a of accounts" [ngValue]="a.id">{{a.firstName}}</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-info">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
 
+    </div>
+    <h3>Available balance: ${{account.balance}}</h3>
+    <div class="button-box">
+        <button (click)="logout()" class="btn btn-info">Log out</button>
+    </div>
 </div>
-<button (click)="logout()" class="btn btn-info">Log out</button>
-<h3>Available balance: ${{account.balance}}</h3>
