@@ -36,7 +36,6 @@ export class AccountService {
   public findOne(email: string | null): Observable<Account> {
     return this.http.get<Account>(`${this.accountsUrl}/user/${email}`);
   }
-  // , { headers: new HttpHeaders({ 'Authorization': `Bearer ${this.token}` }) }
 
   public findAllTransfers(id: string | null): Observable<Transfer[]> {
     return this.http.get<Transfer[]>(`${this.accountsUrl}/transfer/${id}`);

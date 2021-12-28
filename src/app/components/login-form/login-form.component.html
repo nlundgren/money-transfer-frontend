@@ -11,8 +11,7 @@
                 <input type="password" [(ngModel)]="account.password" class="form-control" id="name" name="name"
                     placeholder="Enter your password" required #name="ngModel">
             </div>
-            <button routerLink="/account" type="submit" [disabled]="!accountForm.form.valid"
-                class="btn btn-info">Submit</button>
+            <button type="submit" [disabled]="!accountForm.form.valid" class="btn btn-info">Submit</button>
         </form>
     </div>
     <div *ngIf="step == 'register'" class="card-body">

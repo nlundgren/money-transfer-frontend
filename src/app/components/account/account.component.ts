@@ -50,10 +50,10 @@ export class AccountComponent implements OnInit {
     this.router.navigateByUrl("");
   }
 
-  async ngOnInit() {
+  ngOnInit() {
 
-    await this.decodeToken()
-    await this.loadAccount()
+    this.decodeToken()
+    this.loadAccount()
 
 
     this.accountService.findAll().subscribe((data: any[]) => {
